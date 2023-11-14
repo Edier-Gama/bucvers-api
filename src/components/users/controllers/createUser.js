@@ -6,18 +6,29 @@ const createUser = async (req, res, data) => {
     const passwordHash = await bcrypt.hash(data.password, 10)
     if (data) {
       const myNewUser = new User({
-        firstName: data.firstName,
-        lastName: data.lastName,
+        firstname: data.firstname,
+        lastname: data.lastname,
         username: data.username,
         email: data.email,
         password: passwordHash
       })
       myNewUser.save()
-        .then((user) => {
-          res.status(200).json(user)
+        .then(() => {
+          const userJsonResult = {
+            message: 'user created successfully',
+            status: 200,
+            userData: myNewUser
+          }
+          res.status(200).json(userJsonResult)
         })
         .catch((err) => {
-          res.status(400).send('There was an error creating this user' + err)
+          const badRequestResult = {
+            message: 'Your email is already in use, try other',
+            status: 400,
+            error: err
+          }
+          res.status(400).json(badRequestResult)
+          console.log(err)
         })
     }
   } catch (error) {

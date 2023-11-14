@@ -4,15 +4,26 @@ const model = mongoose.model
 
 const UsersSchema = new Schema({
   id: String,
-  firstName: String,
-  lastName: String,
-  username: String,
-  email: String,
-  password: String,
-  books: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Book'
-  }]
+  firstname: {
+    type: String,
+    required: true
+  },
+  lastname: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
 })
 
 UsersSchema.set('toJSON', {

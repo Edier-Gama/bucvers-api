@@ -14,9 +14,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res, next) => {
   findUserByID(req, res, next)
 })
+
 router.post('/', (req, res) => {
   const data = req.body
-  createUser(req, res, data)
+  if (data) {
+    createUser(req, res, data)
+  }
 })
 
 router.delete('/:id', (req, res, next) => {
