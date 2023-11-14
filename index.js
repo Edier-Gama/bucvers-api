@@ -6,7 +6,8 @@ const cors = require('cors')
 const app = express()
 const PORT = process.env.PORT ?? 3000
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
+  console.log('Listening on PORT :' + PORT)
   res.send('Estoy vivo y escuchando en el puerto ' + PORT)
 })
 

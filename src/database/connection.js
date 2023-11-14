@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const connectionString = process.env.MONGODB_URL
 
-function startDataBase (next) {
+function startDataBase () {
   mongoose.connect(connectionString)
     .then(() => {
       console.log('MongoDB connected successfully')
       console.log('Listening on PORT: ' + process.env.PORT)
     })
     .catch((error) => {
-      next(error)
+      console.log(error)
     })
 }
 

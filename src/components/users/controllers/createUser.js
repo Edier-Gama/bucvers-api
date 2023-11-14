@@ -32,7 +32,7 @@ const createUser = async (req, res, data) => {
         })
     }
   } catch (error) {
-    console.error('There was an error creating this user')
+    console.error(error)
   }
 }
 
